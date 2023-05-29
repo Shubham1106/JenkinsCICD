@@ -6,7 +6,7 @@ pipeline{
     environment {
         TF_HOME = tool('terraform')
         TF_IN_AUTOMATION = "true"
-        PATH = "$TF_HOME:$PATH"
+        PATH = "C:\terraform_1.4.6_windows_386"
     }
     stages {
     
