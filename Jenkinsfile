@@ -14,7 +14,7 @@ pipeline{
         stage('Terraform Init'){
             
             steps {
-                    ansiColor('xterm') {
+                    
                     withCredentials([azureServicePrincipal(
                     credentialsId: 'Jenkins',
                     subscriptionIdVariable: 'ARM_SUBSCRIPTION_ID',
@@ -28,7 +28,7 @@ pipeline{
                         echo "Initialising Terraform"
                         terraform init -backend-config="access_key=$ARM_ACCESS_KEY"
                         """
-                           }
+                           
                     }
              }
         }
@@ -36,7 +36,7 @@ pipeline{
         stage('Terraform Validate'){
             
             steps {
-                    ansiColor('xterm') {
+                    
                     withCredentials([azureServicePrincipal(
                     credentialsId: 'Jenkins',
                     subscriptionIdVariable: 'ARM_SUBSCRIPTION_ID',
@@ -49,7 +49,7 @@ pipeline{
                                 
                         terraform validate
                         """
-                           }
+                           
                     }
              }
         }
@@ -57,7 +57,7 @@ pipeline{
         stage('Terraform Plan'){
             steps {
 
-                    ansiColor('xterm') {
+                    
                     withCredentials([azureServicePrincipal(
                     credentialsId: 'Jenkins',
                     subscriptionIdVariable: 'ARM_SUBSCRIPTION_ID',
@@ -71,7 +71,7 @@ pipeline{
                         echo "Creating Terraform Plan"
                         terraform plan -var "client_id=$ARM_CLIENT_ID" -var "client_secret=$ARM_CLIENT_SECRET" -var "subscription_id=$ARM_SUBSCRIPTION_ID" -var "tenant_id=$ARM_TENANT_ID"
                         """
-                        }
+                        
                 }
             }
         }
@@ -88,7 +88,7 @@ pipeline{
 
         stage('Terraform Apply'){
             steps {
-                    ansiColor('xterm') {
+                    
                     withCredentials([azureServicePrincipal(
                     credentialsId: 'Jenkins',
                     subscriptionIdVariable: 'ARM_SUBSCRIPTION_ID',
@@ -101,7 +101,7 @@ pipeline{
                         echo "Applying the plan"
                         terraform apply -auto-approve -var "client_id=$ARM_CLIENT_ID" -var "client_secret=$ARM_CLIENT_SECRET" -var "subscription_id=$ARM_SUBSCRIPTION_ID" -var "tenant_id=$ARM_TENANT_ID"
                         """
-                                }
+                                
                 }
             }
         }
