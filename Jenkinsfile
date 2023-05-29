@@ -26,6 +26,7 @@ pipeline{
                         bat '''
                                 
                         echo "Initialising Terraform"
+                        az login --service-principal -u $ARM_CLIENT_ID -p $ARM_CLIENT_SECRET --tenant $ARM_TENANT_ID
                         echo "tenant id ${ARM_CLIENT_ID}"
                         terraform init -backend-config="access_key=$ARM_ACCESS_KEY"
                         '''
@@ -68,6 +69,7 @@ pipeline{
                 ), string(credentialsId: 'access_key', variable: 'ARM_ACCESS_KEY')]) {
                         
                         bat '''
+                        
                         
                         echo "Creating Terraform Plan"
                         terraform plan -var "client_id=$ARM_CLIENT_ID" -var "client_secret=$ARM_CLIENT_SECRET" -var "subscription_id=$ARM_SUBSCRIPTION_ID" -var "tenant_id=$ARM_TENANT_ID"
