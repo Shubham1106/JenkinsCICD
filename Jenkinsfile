@@ -23,7 +23,7 @@ pipeline{
                     tenantIdVariable: 'ARM_TENANT_ID'
                 ), string(credentialsId: 'access_key', variable: 'ARM_ACCESS_KEY')]) {
                         
-                        sh '''
+                        bat '''
                                 
                         echo "Initialising Terraform"
                         az login --service-principal -u $ARM_CLIENT_ID -p $ARM_CLIENT_SECRET --tenant $ARM_TENANT_ID
