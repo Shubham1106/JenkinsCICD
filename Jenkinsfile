@@ -8,15 +8,12 @@ pipeline{
         TF_IN_AUTOMATION = "true"
         PATH = "$TF_HOME:$PATH"
     }
-    
-    stages{
+    stages {
+        
         stage('Git Checkout'){
             steps{
                 git branch: 'main', url: 'https://github.com/Shubham1106/JenkinsCICD'
             }
-        }
-   
-    stages {
     
         stage('Terraform Init'){
             
@@ -114,5 +111,4 @@ pipeline{
         }
 
     }
-}
 }
