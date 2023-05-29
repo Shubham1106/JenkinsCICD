@@ -1,16 +1,16 @@
 pipeline{
     agent any 
     tools {
-        "org.jenkinsci.plugins.terraform.TerraformInstallation" "Terraform"
+        "org.jenkinsci.plugins.terraform.TerraformInstallation" "terraform"
     }
     environment {
-        TF_HOME = tool('Terraform')
+        TF_HOME = tool('terraform')
         TF_IN_AUTOMATION = "true"
         PATH = "$TF_HOME:$PATH"
     }
     stages {
     
-        stage('Terraform Init'){
+        stage('terraform init'){
             
             steps {
                     ansiColor('xterm') {
@@ -32,7 +32,7 @@ pipeline{
              }
         }
 
-        stage('Terraform Validate'){
+        stage('terraform validate'){
             
             steps {
                     ansiColor('xterm') {
@@ -53,7 +53,7 @@ pipeline{
              }
         }
 
-        stage('Terraform Plan'){
+        stage('terraform plan'){
             steps {
 
                     ansiColor('xterm') {
@@ -85,7 +85,7 @@ pipeline{
         }
     
 
-        stage('Terraform Apply'){
+        stage('terraform apply'){
             steps {
                     ansiColor('xterm') {
                     withCredentials([azureServicePrincipal(
