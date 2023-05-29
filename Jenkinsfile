@@ -10,12 +10,6 @@ pipeline{
        
     }
     stages {
-        
-        stage('Git Checkout'){
-            steps{
-                git branch: 'main', url: 'https://github.com/Shubham1106/JenkinsCICD'
-            }
-        }
     
         stage('Terraform Init'){
             
