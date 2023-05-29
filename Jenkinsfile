@@ -1,13 +1,6 @@
 pipeline{
     agent any 
     tools {
-       
-    }
-    environment {
-        TF_HOME = tool('terraform')
-        TF_IN_AUTOMATION = "true"
-        PATH = "C:\terraform_1.4.6_windows_386"
-    }
     stages {
     
         stage('terraform init'){
