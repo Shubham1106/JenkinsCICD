@@ -26,7 +26,7 @@ pipeline{
                         sh '''
                                 
                         echo "Initialising Terraform"
-                        az login --service-principal -u $ARM_CLIENT_ID -p $ARM_CLIENT_SECRET --tenant $ARM_TENANT_ID
+                        
                         echo "tenant id ${ARM_CLIENT_ID}"
                         terraform init -backend-config="access_key=$ARM_ACCESS_KEY"
                         '''
