@@ -10,6 +10,7 @@ variable "location" {
 }
 
 variable "instanceCount" {
+    default = 2
     description = "Please enter the number of instacne needs to be created"
   
 }
