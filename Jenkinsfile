@@ -1,8 +1,5 @@
 pipeline{
-    agent any 
-    tools {
-        terraform 'terraform-15'
-    }
+    agent any
    
     stages {
     
