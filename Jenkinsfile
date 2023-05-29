@@ -23,7 +23,7 @@ pipeline{
                     tenantIdVariable: 'ARM_TENANT_ID'
                 ), string(credentialsId: 'access_key', variable: 'ARM_ACCESS_KEY')]) {
                         
-                        sh '''
+                        bat '''
                                 
                         echo "Initialising Terraform"
                         terraform init -backend-config='access_key=$ARM_ACCESS_KEY'
@@ -45,7 +45,7 @@ pipeline{
                     tenantIdVariable: 'ARM_TENANT_ID'
                 ), string(credentialsId: 'access_key', variable: 'ARM_ACCESS_KEY')]) {
                         
-                        sh '''
+                        bat '''
                                 
                         terraform validate
                         '''
@@ -66,7 +66,7 @@ pipeline{
                     tenantIdVariable: 'ARM_TENANT_ID'
                 ), string(credentialsId: 'access_key', variable: 'ARM_ACCESS_KEY')]) {
                         
-                        sh '''
+                        bat '''
                         
                         echo "Creating Terraform Plan"
                         terraform plan -var 'client_id=$ARM_CLIENT_ID' -var 'client_secret=$ARM_CLIENT_SECRET' -var 'subscription_id=$ARM_SUBSCRIPTION_ID' -var 'tenant_id=$ARM_TENANT_ID'
@@ -97,7 +97,7 @@ pipeline{
                     tenantIdVariable: 'ARM_TENANT_ID'
                 ), string(credentialsId: 'access_key', variable: 'ARM_ACCESS_KEY')]) {
 
-                        sh '''
+                        bat '''
                         echo "Applying the plan"
                         terraform apply -auto-approve -var 'client_id=$ARM_CLIENT_ID' -var 'client_secret=$ARM_CLIENT_SECRET' -var 'subscription_id=$ARM_SUBSCRIPTION_ID' -var 'tenant_id=$ARM_TENANT_ID'
                         '''
