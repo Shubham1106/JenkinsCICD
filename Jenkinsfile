@@ -28,6 +28,7 @@ pipeline{
                         echo "Initialising Terraform"
                         
                         echo "tenant id ${ARM_CLIENT_ID}"
+                        echo "changes made"
                         terraform init -backend-config="access_key=$ARM_ACCESS_KEY"
                         '''
                            
