@@ -1,5 +1,5 @@
 variable "prefix" {
-    default = "ShubhamH"
+    default = "Shubham"
     description = "name of the prefix"
 }
 
